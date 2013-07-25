@@ -13,7 +13,7 @@ object Build extends sbt.Build {
             settings = Seq(
               libraryDependencies ++= Seq(
                 "com.novus" %% "unfinagled-core" % "0.1.0",
-                "com.novus" %% "unfinagled-scalatest" % "0.1.0" % "test",
+                "com.novus" %% "unfinagled-scalatest" % "0.1.0" % "test"
               )
             )
            )

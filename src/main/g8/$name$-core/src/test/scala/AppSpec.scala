@@ -1,20 +1,23 @@
 package $organization$.$name;format="lower,word"$
 
-import org.scalatest.WordSpec
+import org.scalatest.GivenWhenThen
 import org.scalatest.matchers.ShouldMatchers
+import unfiltered.response._
+import unfiltered.request._
+import dispatch.classic.Handler
 
-class AppSpec extends WordSpec with ShouldMatchers {
+class IntentSpec extends Served with GivenWhenThen with ShouldMatchers {
 
-  "The 'Hello world' string" should {
-    "contain 11 characters" in {
-      "Hello world" should have length (11)
+  def intent = {
+    case GET(Path("/foobar")) => ResponseString("baz")
+  }
+
+  feature("Unfiltered front end") {
+    scenario("GET foobar") {
+      http(host / "foobar" as_str) should be("baz")
     }
-    "start with 'Hello'" in {
-      "Hello world" should startWith ("Hello")
-    }
-    "end with 'world'" in {
-      "Hello world" should endWith("world")
+
+    scenario("POST foobar") {
+      withHttp { _.x(Handler((host / "foobar").POST, status)) should be(404) }
     }
   }
-  
-}

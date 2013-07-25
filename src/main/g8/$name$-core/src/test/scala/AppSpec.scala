@@ -1,5 +1,6 @@
 package $organization$.$name;format="lower,word"$
 
+import com.novus.unfinagled.Served
 import org.scalatest.GivenWhenThen
 import org.scalatest.matchers.ShouldMatchers
 import unfiltered.response._
@@ -21,3 +22,5 @@ class IntentSpec extends Served with GivenWhenThen with ShouldMatchers {
       withHttp { _.x(Handler((host / "foobar").POST, status)) should be(404) }
     }
   }
+
+}

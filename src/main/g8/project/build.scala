@@ -12,8 +12,9 @@ object Build extends sbt.Build {
             base = file("$name$-core"),
             settings = Seq(
               libraryDependencies ++= Seq(
-                "com.novus" %% "unfinagled-core" % "0.1.0",
-                "com.novus" %% "unfinagled-scalatest" % "0.1.0" % "test"
+                "com.novus" %% "unfinagled-core" % "0.2.0-SNAPSHOT",
+                "com.novus" %% "unfinagled-server" % "0.2.0-SNAPSHOT",
+                "com.novus" %% "unfinagled-scalatest" % "0.2.0-SNAPSHOT" % "test"
               )
             )
            )

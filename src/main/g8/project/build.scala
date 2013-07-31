@@ -12,9 +12,9 @@ object Build extends sbt.Build {
             base = file("$name$-core"),
             settings = Seq(
               libraryDependencies ++= Seq(
-                "com.novus" %% "unfinagled-core" % "0.2.0",
-                "com.novus" %% "unfinagled-server" % "0.2.0",
-                "com.novus" %% "unfinagled-scalatest" % "0.2.0" % "test"
+                "com.novus" %% "unfinagled-core" % "0.3.0-SNAPSHOT",
+                "com.novus" %% "unfinagled-server" % "0.3.0-SNAPSHOT",
+                "com.novus" %% "unfinagled-scalatest" % "0.3.0-SNAPSHOT" % "test"
               )
             )
            )
@@ -39,17 +39,8 @@ object Shared {
     scalaVersion := "2.10.1",
     crossScalaVersions := Seq("2.9.2"),
     scalacOptions := Seq("-deprecation", "-unchecked"),
-    resolvers ++= Seq("Novus Nexus Public" at "https://nexus.novus.com:65443/nexus/content/groups/public/"),
     initialCommands := "import $organization$.$name;format="lower,word"$._",
     shellPrompt := ShellPrompt.buildShellPrompt,
-    publishTo <<= (version) { version: String =>
-      val sfx =
-        if (version.trim.endsWith("SNAPSHOT")) "snapshots"
-        else "releases"
-      val nexus = "https://nexus.novus.com:65443/nexus/content/repositories/"
-      Some("Novus " + sfx at nexus + sfx + "/")
-    },
-    credentials += Credentials(Path.userHome / ".ivy2" / ".novus_nexus")
   ) ++ net.virtualvoid.sbt.graph.Plugin.graphSettings ++ Format.settings
   
 }

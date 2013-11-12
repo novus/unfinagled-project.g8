@@ -12,9 +12,9 @@ object Build extends sbt.Build {
             base = file("$name$-core"),
             settings = Seq(
               libraryDependencies ++= Seq(
-                "com.novus" %% "unfinagled-core" % "0.3.0-SNAPSHOT",
-                "com.novus" %% "unfinagled-server" % "0.3.0-SNAPSHOT",
-                "com.novus" %% "unfinagled-scalatest" % "0.3.0-SNAPSHOT" % "test"
+                "com.novus" %% "unfinagled-core" % "0.3.0",
+                "com.novus" %% "unfinagled-server" % "0.3.0",
+                "com.novus" %% "unfinagled-scalatest" % "0.3.0" % "test"
               )
             )
            )
@@ -40,7 +40,7 @@ object Shared {
     crossScalaVersions := Seq("2.9.2"),
     scalacOptions := Seq("-deprecation", "-unchecked"),
     initialCommands := "import $organization$.$name;format="lower,word"$._",
-    shellPrompt := ShellPrompt.buildShellPrompt,
+    shellPrompt := ShellPrompt.buildShellPrompt
   ) ++ net.virtualvoid.sbt.graph.Plugin.graphSettings ++ Format.settings
   
 }
